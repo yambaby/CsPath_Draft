@@ -33,9 +33,10 @@ public class InternshipRankingService {
             Comparator.comparingDouble(MatchResult::getCompatibilityScore).reversed()
         );
 
-        for (int i = 0; i < rankedEligibleInternships.size() && topEligibleInternships.size() < 4; i++){
-            if (rankedEligibleInternships.get(i).getCompatibilityScore() != 0.0){
-                topEligibleInternships.add(rankedEligibleInternships.get(i));
+        for (int i = 0; i < rankedEligibleInternships.size() && topEligibleInternships.size() < 4; i++) {
+            MatchResult result = rankedEligibleInternships.get(i);
+            if (result.getCompatibilityScore() > 0.0) {
+                topEligibleInternships.add(result);
             }
         }
 
@@ -64,9 +65,10 @@ public class InternshipRankingService {
             Comparator.comparingDouble(MatchResult::getCompatibilityScore).reversed()
         );
 
-        for (int i = 0; i < rankedIneligibleInternships.size() && topIneligibleInternships.size() < 4; i++){
-            if (rankedIneligibleInternships.get(i).getCompatibilityScore() != 0.0){
-                topIneligibleInternships.add(rankedIneligibleInternships.get(i));
+        for (int i = 0; i < rankedIneligibleInternships.size() && topIneligibleInternships.size() < 4; i++) {
+            MatchResult result = rankedIneligibleInternships.get(i);
+            if (result.getCompatibilityScore() > 0.0) {
+                topIneligibleInternships.add(result);
             }
         }
 
