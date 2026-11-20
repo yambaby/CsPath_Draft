@@ -240,6 +240,16 @@ public class InternshipRepository {
         return new ArrayList<>(internships);
     }
 
+    public static Internship getInternshipByID(int id){
+        for (Internship internship : internships){
+            if (id == internship.getId()){
+                return internship;
+            }
+        }
+
+        throw new IllegalArgumentException("Internship not found" + id);
+    }
+
     //Test data
     /*public static void main(String[] args) {
         for (Internship internship : internships) {
